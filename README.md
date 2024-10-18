@@ -582,3 +582,87 @@ for _ in range(T):
     print(result)
 ```
 
+**Problem : Generate All Unique Permutations**
+
+Your task is to create all permutations of a non-empty input string and remove duplicates, if present.
+
+Create as many "shufflings" as you can!
+
+**Examples:**
+
+- With input `'a'`:
+  - Your function should return: `['a']`
+
+- With input `'ab'`:
+  - Your function should return `['ab', 'ba']`
+
+- With input `'abc'`:
+  - Your function should return `['abc', 'acb', 'bac', 'bca', 'cab', 'cba']`
+
+- With input `'aabb'`:
+  - Your function should return `['baab', 'baba', 'aabb', 'bbaa', 'abab', 'abba']`
+
+*Note: The order of the permutations doesn't matter.*
+
+**Solution:**
+
+```python
+def permutations(s):
+    from itertools import permutations
+    return [''.join(p) for p in set(permutations(s))]
+
+# Prompt the user for input
+s = input("Enter a string: ")
+
+# Get the permutations
+result = permutations(s)
+
+# Print the list of permutations
+print(result)
+```
+
+**Number of Valid Splits in an Array**
+
+You are given a 0-indexed integer array `nums` of length `n`.
+
+`nums` contains a valid split at index `i` if the following are true:
+
+1. The sum of the first `i + 1` elements is greater than or equal to the sum of the last `n - i - 1` elements.
+2. There is at least one element to the right of `i`. That is, `0 <= i < n - 1`.
+
+Return the number of valid splits in `nums`.
+
+
+### Solution
+
+```python
+class Solution:
+    def waysToSplitArray(self, nums: List[int]) -> int:
+        # Call the helper function valid_splits to get the number of valid splits
+        return self.valid_splits(nums)
+    
+    def valid_splits(self, nums):
+        # Calculate the total sum of the array
+        total_sum = sum(nums)
+        # Initialize the sum of the left partition
+        sum_left = 0
+        # Initialize the count of valid splits
+        count = 0
+        # Get the length of the array
+        n = len(nums)
+
+        # Iterate through the array from 0 to n-2
+        for i in range(n - 1):
+            # Add the current element to the left sum
+            sum_left += nums[i]
+            # Calculate the sum of the right partition
+            sum_right = total_sum - sum_left
+            # Check if the left sum is greater than or equal to the right sum
+            if sum_left >= sum_right:
+                # Increment the count of valid splits
+                count += 1
+        
+        # Return the total count of valid splits
+        return count
+```
+
