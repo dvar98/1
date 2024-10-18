@@ -190,3 +190,243 @@ x = 18
 result = interpolation_search(arr, x)
 print("Elemento encontrado en el índice:", result)
 ```
+
+### Pila (Stack)
+
+```python
+class Stack:
+    def __init__(self):
+        """
+        Inicializa una pila vacía.
+        """
+        self.items = []
+
+    def is_empty(self):
+        """
+        Verifica si la pila está vacía.
+        :return: True si la pila está vacía, False en caso contrario.
+        """
+        return len(self.items) == 0
+
+    def push(self, item):
+        """
+        Añade un elemento a la pila.
+        :param item: Elemento a añadir.
+        """
+        self.items.append(item)
+
+    def pop(self):
+        """
+        Elimina y devuelve el elemento en la cima de la pila.
+        :return: Elemento en la cima de la pila.
+        """
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            raise IndexError("pop from empty stack")
+
+    def peek(self):
+        """
+        Devuelve el elemento en la cima de la pila sin eliminarlo.
+        :return: Elemento en la cima de la pila.
+        """
+        if not self.is_empty():
+            return self.items[-1]
+        else:
+            raise IndexError("peek from empty stack")
+
+    def size(self):
+        """
+        Devuelve el número de elementos en la pila.
+        :return: Número de elementos en la pila.
+        """
+        return len(self.items)
+
+# Ejemplo de uso
+pila = Stack()
+pila.push(1)
+pila.push(2)
+print("Elemento en la cima:", pila.peek())
+print("Elemento eliminado:", pila.pop())
+print("Tamaño de la pila:", pila.size())
+```
+
+### Cola (Queue)
+
+```python
+class Queue:
+    def __init__(self):
+        """
+        Inicializa una cola vacía.
+        """
+        self.items = []
+
+    def is_empty(self):
+        """
+        Verifica si la cola está vacía.
+        :return: True si la cola está vacía, False en caso contrario.
+        """
+        return len(self.items) == 0
+
+    def enqueue(self, item):
+        """
+        Añade un elemento al final de la cola.
+        :param item: Elemento a añadir.
+        """
+        self.items.insert(0, item)
+
+    def dequeue(self):
+        """
+        Elimina y devuelve el elemento al frente de la cola.
+        :return: Elemento al frente de la cola.
+        """
+        if not self.is_empty():
+            return self.items.pop()
+        else:
+            raise IndexError("dequeue from empty queue")
+
+    def size(self):
+        """
+        Devuelve el número de elementos en la cola.
+        :return: Número de elementos en la cola.
+        """
+        return len(self.items)
+
+# Ejemplo de uso
+cola = Queue()
+cola.enqueue(1)
+cola.enqueue(2)
+print("Elemento al frente:", cola.dequeue())
+print("Tamaño de la cola:", cola.size())
+```
+
+### Lista Enlazada (Linked List)
+
+```python
+class Node:
+    def __init__(self, data):
+        """
+        Inicializa un nodo.
+        :param data: Datos que contiene el nodo.
+        """
+        self.data = data
+        self.next = None
+
+class LinkedList:
+    def __init__(self):
+        """
+        Inicializa una lista enlazada vacía.
+        """
+        self.head = None
+
+    def is_empty(self):
+        """
+        Verifica si la lista enlazada está vacía.
+        :return: True si la lista está vacía, False en caso contrario.
+        """
+        return self.head is None
+
+    def append(self, data):
+        """
+        Añade un nodo al final de la lista enlazada.
+        :param data: Datos que contiene el nodo.
+        """
+        new_node = Node(data)
+        if self.is_empty():
+            self.head = new_node
+        else:
+            current = self.head
+            while current.next:
+                current = current.next
+            current.next = new_node
+
+    def display(self):
+        """
+        Muestra los elementos de la lista enlazada.
+        """
+        current = self.head
+        while current:
+            print(current.data, end=" -> ")
+            current = current.next
+        print("None")
+
+# Ejemplo de uso
+lista = LinkedList()
+lista.append(1)
+lista.append(2)
+lista.append(3)
+lista.display()
+```
+
+### Árbol Binario de Búsqueda (Binary Search Tree)
+
+```python
+class TreeNode:
+    def __init__(self, key):
+        """
+        Inicializa un nodo del árbol.
+        :param key: Clave del nodo.
+        """
+        self.key = key
+        self.left = None
+        self.right = None
+
+class BinarySearchTree:
+    def __init__(self):
+        """
+        Inicializa un árbol binario de búsqueda vacío.
+        """
+        self.root = None
+
+    def insert(self, key):
+        """
+        Inserta una clave en el árbol binario de búsqueda.
+        :param key: Clave a insertar.
+        """
+        if self.root is None:
+            self.root = TreeNode(key)
+        else:
+            self._insert(self.root, key)
+
+    def _insert(self, node, key):
+        """
+        Función auxiliar para insertar una clave en el árbol.
+        :param node: Nodo actual.
+        :param key: Clave a insertar.
+        """
+        if key < node.key:
+            if node.left is None:
+                node.left = TreeNode(key)
+            else:
+                self._insert(node.left, key)
+        else:
+            if node.right is None:
+                node.right = TreeNode(key)
+            else:
+                self._insert(node.right, key)
+
+    def inorder(self):
+        """
+        Realiza un recorrido en orden del árbol y muestra las claves.
+        """
+        self._inorder(self.root)
+
+    def _inorder(self, node):
+        """
+        Función auxiliar para el recorrido en orden.
+        :param node: Nodo actual.
+        """
+        if node:
+            self._inorder(node.left)
+            print(node.key, end=" ")
+            self._inorder(node.right)
+
+# Ejemplo de uso
+bst = BinarySearchTree()
+bst.insert(10)
+bst.insert(5)
+bst.insert(15)
+bst.insert(3)
+bst.insert(7)
+bst.inorder()
+```
