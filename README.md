@@ -521,31 +521,3 @@ if solucion:
         print(fila)
 ```
 
-** Good Permutations: **
-
-You are given a sequence  of length , created by removing some elements (possibly zero) from a permutation of numbers . When an element is removed, an empty spot (represented by ) is left in the sequence, and the length of the sequence remains the same. You are also given an integer .
-
-A permutation  is called good if:
-
-It is possible to replace the empty spots in  by numbers in such a way that we obtain the permutation .
-
-The number of positions  () such that  is equal to .
-
-
-Your task is to find the number of good permutations.
-
-** Input **
-
-The first line of the input contains a single integer , denoting the number of test cases.
-
-For each test case:
-
-The first line contains two space-separated integers  and .
-
-The second line contains  space-separated integers , where each element of this sequence is either  (indicating an empty spot previously occupied by a removed element) or an integer between  and  inclusive.
-
-
-
-** Output **
-
-For each test case, print a single line containing one integer — the number of good permutations.
