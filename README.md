@@ -521,9 +521,9 @@ if solucion:
         print(fila)
 ```
 
-## Problema de las Buenas Permutaciones
+**Problema de las Buenas Permutaciones**
 
-### Descripción
+**Descripción**
 
 Tienes una secuencia de longitud \( N \), creada eliminando algunos elementos (posiblemente ninguno) de una permutación de números \( (1, 2, \ldots, N) \). Cuando se elimina un elemento, se deja un espacio vacío (representado por \( 0 \)) en la secuencia y la longitud de la secuencia permanece igual. También se te da un entero \( K \).
 
@@ -534,37 +534,17 @@ Una permutación \( p \) se llama buena si:
 
 Tu tarea es encontrar el número de buenas permutaciones.
 
-### Entrada
+**Entrada**
 
 - La primera línea de la entrada contiene un solo entero \( T \), que denota el número de casos de prueba.
 - Para cada caso de prueba:
   - La primera línea contiene dos enteros separados por espacios \( N \) y \( K \).
   - La segunda línea contiene \( N \) enteros separados por espacios \( a_1, a_2, \ldots, a_N \), donde cada elemento de esta secuencia es \( 0 \) (indicando un espacio vacío previamente ocupado por un elemento eliminado) o un entero entre 1 y \( N \) inclusive.
 
-### Salida
+**Salida**
 
 Para cada caso de prueba, imprime una sola línea que contiene un entero: el número de buenas permutaciones.
 
-### Ejemplo de Uso
-
-#### Entrada
-
-```
-2
-4 2
-0 2 0 4
-5 3
-0 0 0 0 5
-```
-
-#### Salida
-
-```
-2
-1
-```
-
-### Solución en Python
 
 ```python
 def count_good_permutations(N, K, a):
