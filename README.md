@@ -449,5 +449,74 @@ Encontrar todas las configuraciones posibles para colocar N reinas en el tablero
 **Ejemplo:**
 Para N = 8 (Problema de las 8 Reinas), el objetivo es colocar 8 reinas en un tablero de 8x8 de manera que ninguna de ellas se ataque entre sí.
 
-Este problema se puede resolver utilizando técnicas como el backtracking, que exploran todas las posibles configuraciones y retroceden cuando se encuentra una configuración conflictiva.
+### Solución del Problema de las 8 Reinas
+```python
+def is_safe(board, row, col):
+    """
+    Verifica si es seguro colocar una reina en la posición (row, col) en el tablero.
+    :param board: Tablero de ajedrez.
+    :param row: Fila actual.
+    :param col: Columna actual.
+    :return: True si es seguro colocar la reina, de lo contrario False.
+    """
+    # Verifica la fila a la izquierda
+    for i in range(col):
+        if board[row][i] == 1:
+            return False
 
+    # Verifica la diagonal superior a la izquierda
+    for i, j in zip(range(row, -1, -1), range(col, -1, -1)):
+        if board[row][j] == 1:
+            return False
+
+    # Verifica la diagonal inferior a la izquierda
+    for i, j in zip(range(row, len(board), 1), range(col, -1, -1)):
+        if board[row][j] == 1:
+            return False
+
+    return True
+
+def solve_n_queens_util(board, col):
+    """
+    Utilidad para resolver el problema de las n reinas utilizando backtracking.
+    :param board: Tablero de ajedrez.
+    :param col: Columna actual.
+    :return: True si se puede resolver el problema, de lo contrario False.
+    """
+    # Si todas las reinas están colocadas, retorna True
+    if col >= len(board):
+        return True
+
+    # Considera esta columna y trata de colocar una reina en cada fila
+    for i in range(len(board)):
+        if is_safe(board, i, col):
+            board[i][col] = 1
+            # Recursivamente coloca el resto de las reinas
+            if solve_n_queens_util(board, col + 1):
+                return True
+            # Si colocar la reina en board[i][col] no lleva a una solución, la elimina
+            board[i][col] = 0
+
+    return False
+
+def solve_n_queens(n):
+    """
+    Resuelve el problema de las n reinas.
+    :param n: Número de reinas.
+    :return: Tablero con la solución.
+    """
+    board = [[0 for _ in range(n)] for _ in range(n)]
+
+    if not solve_n_queens_util(board, 0):
+        print("No existe solución")
+        return None
+
+    return board
+
+# Ejemplo de uso
+n = 8
+solucion = solve_n_queens(n)
+if solucion:
+    for fila in solucion:
+        print(fila)
+```
