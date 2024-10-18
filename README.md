@@ -545,6 +545,7 @@ Tu tarea es encontrar el número de buenas permutaciones.
 
 Para cada caso de prueba, imprime una sola línea que contiene un entero: el número de buenas permutaciones.
 
+### Solución del problema:
 
 ```python
 def count_good_permutations(N, K, a):
