@@ -521,3 +521,83 @@ if solucion:
         print(fila)
 ```
 
+## Problema de las Buenas Permutaciones
+
+### Descripción
+
+Tienes una secuencia de longitud \( N \), creada eliminando algunos elementos (posiblemente ninguno) de una permutación de números \( (1, 2, \ldots, N) \). Cuando se elimina un elemento, se deja un espacio vacío (representado por \( 0 \)) en la secuencia y la longitud de la secuencia permanece igual. También se te da un entero \( K \).
+
+Una permutación \( p \) se llama buena si:
+
+- Es posible reemplazar los espacios vacíos en \( a \) por números de tal manera que obtengamos la permutación \( p \).
+- El número de posiciones \( i \) (\( 1 < i \leq N \)) tales que \( p_i > p_{i-1} \) es igual a \( K \).
+
+Tu tarea es encontrar el número de buenas permutaciones.
+
+### Entrada
+
+- La primera línea de la entrada contiene un solo entero \( T \), que denota el número de casos de prueba.
+- Para cada caso de prueba:
+  - La primera línea contiene dos enteros separados por espacios \( N \) y \( K \).
+  - La segunda línea contiene \( N \) enteros separados por espacios \( a_1, a_2, \ldots, a_N \), donde cada elemento de esta secuencia es \( 0 \) (indicando un espacio vacío previamente ocupado por un elemento eliminado) o un entero entre 1 y \( N \) inclusive.
+
+### Salida
+
+Para cada caso de prueba, imprime una sola línea que contiene un entero: el número de buenas permutaciones.
+
+### Ejemplo de Uso
+
+#### Entrada
+
+```
+2
+4 2
+0 2 0 4
+5 3
+0 0 0 0 5
+```
+
+#### Salida
+
+```
+2
+1
+```
+
+### Solución en Python
+
+```python
+def count_good_permutations(N, K, a):
+    from itertools import permutations
+
+    def is_good_permutation(p, K):
+        count = 0
+        for i in range(1, len(p)):
+            if p[i] > p[i-1]:
+                count += 1
+        return count == K
+
+    # Fill the empty spots (0s) with the remaining numbers
+    available_numbers = set(range(1, N+1)) - set(a)
+    empty_indices = [i for i in range(N) if a[i] == 0]
+
+    good_permutations_count = 0
+
+    for perm in permutations(available_numbers):
+        b = a[:]
+        for idx, val in zip(empty_indices, perm):
+            b[idx] = val
+        if is_good_permutation(b, K):
+            good_permutations_count += 1
+
+    return good_permutations_count
+
+# Leer la entrada
+T = int(input())
+for _ in range(T):
+    N, K = map(int, input().split())
+    a = list(map(int, input().split()))
+    result = count_good_permutations(N, K, a)
+    print(result)
+```
+
