@@ -434,4 +434,20 @@ bst.inorder()
 ```
 ## Problemas resueltos
 
-### Probabilidad
+
+**Problema de las N Reinas:**
+
+Colocar N reinas en un tablero de ajedrez de NxN de tal manera que ninguna reina pueda atacar a otra. Esto significa que no puede haber dos reinas en la misma fila, columna o diagonal.
+
+**Objetivo:**
+Encontrar todas las configuraciones posibles para colocar N reinas en el tablero, o al menos una configuración válida si existe.
+
+**Restricciones:**
+- Cada reina puede moverse horizontalmente, verticalmente y diagonalmente en cualquier dirección.
+- Dos reinas no pueden compartir la misma fila, columna o diagonal.
+
+**Ejemplo:**
+Para N = 8 (Problema de las 8 Reinas), el objetivo es colocar 8 reinas en un tablero de 8x8 de manera que ninguna de ellas se ataque entre sí.
+
+Este problema se puede resolver utilizando técnicas como el backtracking, que exploran todas las posibles configuraciones y retroceden cuando se encuentra una configuración conflictiva.
+
