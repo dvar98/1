@@ -3,9 +3,7 @@
 ## Descripción
 Este repositorio contiene una colección de algoritmos útiles para competiciones de programación.
 
-## Algoritmos
-
-### Algoritmos de ordenamiento
+## Algoritmos de ordenamiento
 
 ### Algoritmo de Bubble Sort
 
@@ -90,6 +88,8 @@ def insertion_sort(arr):
         arr[j + 1] = key
     return arr
 ```
+
+## Algoritmo de busqueda
 
 ### Búsqueda Lineal
 
@@ -190,6 +190,8 @@ x = 18
 result = interpolation_search(arr, x)
 print("Elemento encontrado en el índice:", result)
 ```
+
+## Estrucuturas de Datos
 
 ### Pila (Stack)
 
@@ -430,3 +432,6 @@ bst.insert(3)
 bst.insert(7)
 bst.inorder()
 ```
+## Problemas resueltos
+
+### Probabilidad
