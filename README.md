@@ -1,10 +1,4 @@
-# Algoritmos para maratón
-
-## Descripción
-Este repositorio contiene una colección de algoritmos útiles para competiciones de programación.
-
 ## Algoritmos de ordenamiento
-
 ### Algoritmo de Bubble Sort
 
 ``` python
